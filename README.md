@@ -1,10 +1,10 @@
 =============
-== adaopts ==
+== ADAOPTS ==
 =============
 Python-Optparser style option pasrser
 
 ===========
-== Build ==
+== BUILD ==
 ===========
 gcc-gnat is needed; 
 make - build binary file with example
