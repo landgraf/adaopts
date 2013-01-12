@@ -1,0 +1,10 @@
+project AdaOpts is
+    for Languages use ("Ada");
+    for Source_Dirs use ("../src");
+    for Object_Dir use "../obj";
+    for Exec_Dir use "../bin";
+    for Main use ("adaopts");
+    for Library_Version use "libadaopts.so.0.0.1";
+    for Library_Kind use "relocatable";
+
+end AdaOpts;
