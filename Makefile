@@ -8,6 +8,16 @@ DBHOST = "192.168.0.1"
 DBUSER = test 
 DBNAME = test
 DBPASSWORD = test
+I_PRE ?= /usr/
+I_DIR ?= ${I_PRE}/include
+I_DAT ?= ${I_PRE}/share
+I_DOC ?= ${I_DAT}/doc
+I_LIB ?= ${I_DAT}/lib
+I_NLIB ?= ${I_DAT}/lib/adaproj/
+I_PROJ ?= ${I_LIB}/gnat
+CP ?= /bin/cp -a 
+GPRBUILD ?=  gprbuild -p -f -gnat12
+
 all: clean build_debug
 
 debug :clean build_debug
@@ -15,21 +25,22 @@ warn: clean build_all_warnings
 strip: clean build_strip
 
 build: 
-	gprbuild -Pgnat/adaopts  -gnat12  -p -f ${OPTFLAGS}
+	${GPRBUILD} -Pgnat/adaopts   ${OPTFLAGS}
 
 build_debug: 
-	gprbuild -Pgnat/adaopts -p  -f -gnat12 -gnata -cargs -O0 -g    ${OPTFLAGS}
-
-build_ada05: 
-	gprbuild -Pgnat/adaopts -p  -f -gnat12 -gnata -cargs -O0 -g   ${OPTFLAGS}
+	${GPRBUILD} -Pgnat/adaopts -gnata -cargs -O0 -g    ${OPTFLAGS}
 
 build_all_warnings: 
-	gprbuild -Pgnat/adaopts -p   -f -gnat12 -gnata -gnatwu -cargs -O0 -g  -v  ${OPTFLAGS}
+	${GPRBUILD} -Pgnat/adaopts  -gnata -gnatwu -cargs -O0 -g  -v  ${OPTFLAGS}
 
 clean:
 	rm -rf bin/ obj/ lib/
 
 install:
+	@mkdir -p ${DESTDIR}/${I_DIR} ${DESTDIR}/${I_DAT} ${DESTDIR}/${I_DOC} ${DESTDIR}/${I_LIB} ${DESTDIR}/${I_PROJ} ${DESTDIR}/${I_NLIB}
+	find src/ -name "*.ad[bs]" -exec cp {} ${DESTDIR}/${I_DIR}\; 
+	${CP} lib/*.so ${DESTDIR}/${I_LIB}
+	${CP} obj/*.ali ${DESTDIR}/${I_LIB}
 	@echo "Not implemented yet"
 	exit 1
 
