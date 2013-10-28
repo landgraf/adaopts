@@ -53,7 +53,7 @@ install:
 	cp -r lib/*.ali ${DESTDIR}/${libdir}/${PROJECT}
 	cp -r lib/*.so* ${DESTDIR}/${libdir}/${PROJECT}
 	cp -r src/*.ad? ${DESTDIR}/${includedir}/${PROJECT}
-	cp -r gnat/adalogger.gpr ${DESTDIR}/${gprdir}
+	cp -r gnat/${PROJECT}.gpr ${DESTDIR}/${gprdir}
 	cd ${DESTDIR}/${libdir} && ln -s ${PROJECT}/*.so* .
 
 clean_rpm:

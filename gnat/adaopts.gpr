@@ -1,0 +1,13 @@
+with "directories";
+project adaopts is 
+    for Source_Dirs use (Directories.Includedir & "/adaopts/");
+    for Library_Dir use Directories.Libdir & "/adaopts/";
+    for Object_Dir use Directories.Libdir & "/adaopts/";
+
+    for Externally_Built use "True";
+
+    package Linker is
+        for Linker_Options use ("-ladaopts");
+    end Linker;
+
+end adaopts; 
