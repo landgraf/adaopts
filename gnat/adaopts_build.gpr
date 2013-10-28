@@ -1,11 +1,12 @@
 library project AdaOpts_build is
+    Version := "0.1";
     for Languages use ("Ada");
     for Source_Dirs use ("../src");
     for Object_Dir use "../obj";
     for Exec_Dir use "../bin";
-    for Library_Version use "libadaopts.so.0.0.1";
     for Library_Kind use "relocatable";
-    for Library_Name use "libadaopts.so";
+    for Library_Name use "adaopts";
     for Library_Dir use "../lib";
+    for Library_Version use "libadaopts.so." & Version;
 
 end AdaOpts_build;
