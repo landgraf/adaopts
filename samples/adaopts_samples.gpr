@@ -1,0 +1,5 @@
+with "adaopts";
+project adaopts_samples is 
+    for Source_Dirs use (".");
+    for Main use ("sample.adb");
+end adaopts_samples; 

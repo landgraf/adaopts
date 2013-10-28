@@ -8,7 +8,7 @@ prefix ?= /usr/local
 libdir ?= ${prefix}/lib
 includedir ?= ${prefix}/include
 gprdir ?= ${prefix}/share/gpr
-VERSION = 0.1
+VERSION = 0.2
 
 
 all: clean build
