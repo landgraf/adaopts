@@ -19,7 +19,7 @@ with AdaOpts_Parsers; use AdaOpts_Parsers;
 with CMD_Options_Lists; use CMD_Options_Lists;
 with Ada.Text_Io; use Ada.Text_Io;
 
-procedure AdaOpts is 
+procedure sample  is 
     parser :Any_AdaOpts_Parser := new AdaOpts_Parser;
     options : cmd_options_list_access;
 begin
@@ -50,4 +50,4 @@ begin
         Put_Line("Passed, value is " & parser.option("memory").value);
     end if;
     AdaOpts_Parsers.free_parser(parser);
-end AdaOpts;
+end sample;
