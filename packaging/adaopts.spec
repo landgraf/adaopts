@@ -4,7 +4,7 @@ Release:	1%{?dist}
 Summary:	Option parser for Ada
 
 Group:		Development/Libraries
-License:	GPLv3+
+License:	GPLv2
 URL:		http://ada-ru.org
 Source0:	%{name}-%{version}.tgz
 
@@ -15,7 +15,7 @@ BuildRequires:	gcc-gnat fedora-gnat-project-common > 3
 
 %package devel
 Summary:    Devel package for %{name}
-License:    GPLv3+
+License:    GPLv2
 Group:      Development/Libraries
 Requires:   %{name}%{?_isa} = %{version}-%{release}
 Requires:   fedora-gnat-project-common > 3
@@ -40,17 +40,19 @@ make install DESTDIR=%{buildroot} prefix=%{_prefix} libdir=%{_libdir}
 %postun -p /sbin/ldconfig
 
 %files
-%doc
+%doc COPYING
 %{_libdir}/%{name}/*.so.%{version}
 %{_libdir}/*.so.%{version}
 
 %files devel
-%doc
+%doc README*
 %{_includedir}/%{name}
 %{_libdir}/%{name}/*.ali
 %{_libdir}/*.so
 %{_libdir}/%{name}/*.so
-
+%{_libdir}/%{name}/*.so.?
+%{_libdir}/*.so.?
+%{_GNAT_project_dir}/%{name}.gpr
 
 %changelog
 
