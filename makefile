@@ -1,7 +1,8 @@
 BUILDER ?= gprbuild -p -f -gnat12
 FLAGS ?=
 BUILD = $(BUILDER) ${FLAGS}
-PROJECT = $(shell basename ${PWD})
+NAME = $(shell basename ${PWD})
+PROJECT ?= adaopts
 DESTDIR ?= 
 prefix ?= /usr/local
 libdir ?= ${prefix}/lib
@@ -54,3 +55,11 @@ install:
 	cp -r src/*.ad? ${DESTDIR}/${includedir}/${PROJECT}
 	cp -r gnat/adalogger.gpr ${DESTDIR}/${gprdir}
 	cd ${DESTDIR}/${libdir} && ln -s ${PROJECT}/*.so* .
+
+clean_rpm:
+	rm -rf ${HOME}/rpmbuild/SOURCES/${NAME}-${VERSION}.tgz
+
+rpm: clean_rpm
+	git archive --prefix=${NAME}-${VERSION}/ -o ${HOME}/rpmbuild/SOURCES/${NAME}-${VERSION}.tgz HEAD
+	rpmbuild -ba packaging/${NAME}.spec
+
