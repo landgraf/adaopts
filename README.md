@@ -1,16 +1,10 @@
-=============
-== ADAOPTS ==
-=============
+~~ADAOPTS 
 Python-Optparser style option pasrser
 
-===========
-== BUILD ==
-===========
+~~BUILD 
 gcc-gnat is needed; 
 make - build binary file with example
 "make install" is not implemented yet
 
-===========
-== USAGE ==
-===========
+~~USAGE 
 see src/adaopt.adb
