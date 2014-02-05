@@ -82,7 +82,11 @@ package body CMD_Options is
             opt.option := adaopts_available_options.Get_Option(curopt);
             opt.Name := opt.option.Dest;
             if opt.option.all in AdaOpts_Option_Valued then
-                opt.value :=  To_Unbounded_String(Ada.Command_line.Argument(Arg+1));
+                if Ada.Command_line.Argument_Count < Arg + 1 then
+                    raise MAILFORMED_OPTION with "Required value was not specified for option: " & Ada.Command_line.Argument(Arg);
+                else
+                    opt.value :=  To_Unbounded_String(Ada.Command_line.Argument(Arg+1));
+                end if;
             end if;
         else
             raise INCORRECT_OPTION;
